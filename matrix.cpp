@@ -15,7 +15,7 @@ matrix::matrix() :  rows(1), columns(1) {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = 0.0; // change this to equal othermatrix values
-            cout << fixed << setprecision(3) << matArr[i][j] << " ";
+            cout << matArr[i][j] << " ";
         }
         cout << endl;
     }
@@ -48,7 +48,7 @@ matrix::matrix(int n) : rows(n), columns(n) {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = 0;
-            cout << fixed << setprecision(3) << matArr[i][j] << " ";
+            cout << matArr[i][j] << " ";
         }
         cout << endl;
     }
@@ -62,7 +62,7 @@ matrix::matrix(int r, int c) : rows(r), columns(c) {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = 0;
-            cout << fixed << setprecision(3) << matArr[i][j] << " ";
+            cout << matArr[i][j] << " ";
         }
         cout << endl;
     }
@@ -123,7 +123,7 @@ matrix::matrix(int r[], int arrSize) {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = r[index++];
-            cout << fixed << setprecision(3) << matArr[i][j] << " ";
+            cout << matArr[i][j] << " ";
         }
         cout << endl;
     }
@@ -133,7 +133,7 @@ void matrix::setValue(int r, int c, int newValue) {
     matArr[r-1][c-1] = newValue;
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
-            cout << fixed << setprecision(3) << matArr[i][j] << " ";
+            cout << matArr[i][j] << " ";
         }
         cout << endl;
     }
@@ -151,7 +151,7 @@ void matrix::clear() {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = 0;
-            cout << fixed << setprecision(3) << matArr[i][j] << " ";
+            cout << matArr[i][j] << " ";
         }
         cout << endl;
     }
@@ -183,7 +183,7 @@ void matrix::createProbabilityMatrix() {
 ostream& operator<< (ostream& os, const matrix& a) {
     for  (int i = 0; i < a.rows; i++) {
         for (int j = 0; j < a.columns; j++) {
-            os << fixed << setprecision(3) << a.matArr[i][j] << " ";
+            os << a.matArr[i][j] << " ";
         }
         os << endl;
     }
@@ -225,7 +225,7 @@ bool matrix::compare(matrix rhs, double tolerance) {
     }
     for  (int i = 0; i < this->rows; i++) {
         for (int j = 0; j < this->columns; j++) {
-            if (!(this->matArr[i][j] <= (rhs.matArr[i][j] + tolerance)) && !(this->matArr[i][j] >= (rhs.matArr[i][j] - tolerance))) {
+            if (!abs(this->matArr[i][j] - rhs.matArr[i][j]) <= tolerance) {
                 return false;
             }
         }
@@ -243,7 +243,7 @@ matrix::matrix(int n, double value) {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = value;
-            cout << fixed << setprecision(3) << matArr[i][j] << " ";
+            cout << matArr[i][j] << " ";
         }
         cout << endl;
     }
@@ -283,12 +283,17 @@ matrix& matrix::operator*=(const matrix &rhs) {
     for (int i = 0; i < prodRow; i++) {
         for (int j = 0; j < prodCol; j++) {
             for (int k = 0; k < columns; k++) {
-                product.matArr[i][j] += matArr[k][j] * rhs.matArr[i][k];
+                cout << "matArr[k][j] " << matArr[k][j] << endl;
+                cout << "rhs.matArr[k][j] " << rhs.matArr[i][k] << endl; //this is 1, then 0,0,0
+                product.matArr[i][j] += matArr[i][k] * rhs.matArr[k][j];
                 cout << matArr[k][j] * rhs.matArr[i][k] << " ";
             }
         }
         cout << endl;
     }
+    this->matArr = product.matArr;
+    this->columns = prodCol;
+    this->rows = prodRow;
     this->matArr = product.matArr;
     product.matArr = nullptr;
     return *this;

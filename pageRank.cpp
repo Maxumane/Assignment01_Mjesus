@@ -37,10 +37,16 @@ void pageRanking() {
     cout << "//////////////" << endl;
     cout << "//////////////" << endl;
     cout << "//////////////" << endl;
+    matrix testMultiply = test * rankMatrix;
+    cout << test;
+    cout << "//////////////" << endl;
+    cout << testMultiply;
+    cout << "//////////////" << endl;
+    cout << "//////////////" << endl;
+    cout << "//////////////" << endl;
     matrix postMarkov = markov(m, rankMatrix);
-    cout << "//////////////" << endl;
-    cout << "//////////////" << endl;
-    cout << "//////////////" << endl;
+    cout << postMarkov << endl;
+//    matrix newM = test * test;
 }
 
 int * readFile(int * size) {
@@ -73,13 +79,18 @@ int * readFile(int * size) {
 
 matrix markov(matrix m, matrix rankMatrix) {
 
-    matrix newM = m * rankMatrix;
+    matrix newM = (m * rankMatrix);
 
-//    while (!newM.compare(rankMatrix, 0.01)) {
-//        rankMatrix = newM;
-//        newM = m * rankMatrix;
-//    }
+
+    while (!newM.compare(rankMatrix, 0.001)) {
+        rankMatrix = newM;
+        newM = m * rankMatrix;
+    }
 
     return newM;
+}
+
+void addItUp() {
+
 }
 

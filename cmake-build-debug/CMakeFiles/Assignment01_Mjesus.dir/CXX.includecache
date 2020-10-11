@@ -6,39 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/matrix.hpp
-iostream
--
-vector
--
-
-/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/pageRank.cpp
-pageRank.hpp
-/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/pageRank.hpp
-fstream
--
-ctime
--
-fstream
--
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/matrix.cpp
 iomanip
--
-iostream
 -
 matrix.hpp
 /cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/matrix.hpp
 cmath
 -
 
-/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/pageRank.hpp
-fstream
--
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/matrix.hpp
 iostream
 -
-iomanip
+vector
 -
-algorithm
--
-matrix.hpp
-/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/matrix.hpp
 
