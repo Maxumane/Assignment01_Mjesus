@@ -1,0 +1,3 @@
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/cmake-build-debug/CMakeFiles/Assignment01_Mjesus.dir
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/cmake-build-debug/CMakeFiles/edit_cache.dir

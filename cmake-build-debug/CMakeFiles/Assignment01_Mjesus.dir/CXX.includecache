@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/matrix.hpp
+iostream
+-
+vector
+-
+
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/pageRank.cpp
+pageRank.hpp
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/pageRank.hpp
+fstream
+-
+ctime
+-
+fstream
+-
+iomanip
+-
+iostream
+-
+matrix.hpp
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/matrix.hpp
+
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/pageRank.hpp
+fstream
+-
+iostream
+-
+iomanip
+-
+algorithm
+-
+
