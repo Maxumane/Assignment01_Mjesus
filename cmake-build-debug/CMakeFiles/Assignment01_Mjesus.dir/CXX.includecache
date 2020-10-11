@@ -27,6 +27,8 @@ iostream
 -
 matrix.hpp
 /cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/matrix.hpp
+cmath
+-
 
 /cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/pageRank.hpp
 fstream
@@ -37,4 +39,6 @@ iomanip
 -
 algorithm
 -
+matrix.hpp
+/cygdrive/c/Users/Max/CLionProjects/Assignment01_Mjesus/matrix.hpp
 

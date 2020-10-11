@@ -19,8 +19,10 @@ public:
     matrix();
     matrix(int n);
     matrix(int r, int c);
+    matrix(int r, int c, double value);
     matrix(double formArray[]);
     matrix(int r[], int arrSize);
+    matrix(int n, double value);
     void setValue(int r, int c, int newValue);
     int getValue(int r, int c);
     void clear();

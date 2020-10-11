@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <iostream>
 #include "matrix.hpp"
+#include <cmath>
 const char *targetfile = "readings.txt";
 using namespace std;
 const int MAX_SIZE = 100;
@@ -19,10 +20,27 @@ void pageRanking() {
     cout << "array size: " << arrSize << endl;
     matrix test = matrix(arr, arrSize);
     test.createProbabilityMatrix();
-    matrix s = test * 0.85;
-    cout << s;
-//    matrix rankMatrix = generateRankMatrix();
-//    s.markov()
+    matrix m1 = test * 0.85;
+    cout << m1;
+    matrix teleportMatrix = matrix(arrSize, (1/sqrt(arrSize)));
+    matrix m2 = teleportMatrix * 0.15;
+    matrix m = m1 + m2;
+    cout << "//////////////" << endl;
+    cout << "//////////////" << endl;
+    cout << "//////////////" << endl;
+    cout << m;
+    cout << "//////////////" << endl;
+    cout << "//////////////" << endl;
+    cout << "printRank" << endl;
+    matrix rankMatrix = matrix(sqrt(arrSize), 1, 1);
+    cout << rankMatrix << endl;
+    cout << "//////////////" << endl;
+    cout << "//////////////" << endl;
+    cout << "//////////////" << endl;
+    matrix postMarkov = markov(m, rankMatrix);
+    cout << "//////////////" << endl;
+    cout << "//////////////" << endl;
+    cout << "//////////////" << endl;
 }
 
 int * readFile(int * size) {
@@ -34,7 +52,7 @@ int * readFile(int * size) {
     numbers = new int[100];
     int count = 0;
     if (myReadFile.is_open()){
-        while (myReadFile >> output && !myReadFile.eof())
+        while (myReadFile >> output)
         {
             numbers[count] = output;
             count++;
@@ -51,5 +69,17 @@ int * readFile(int * size) {
     myReadFile.close();
 
     return numbers;
+}
+
+matrix markov(matrix m, matrix rankMatrix) {
+
+    matrix newM = m * rankMatrix;
+
+//    while (!newM.compare(rankMatrix, 0.01)) {
+//        rankMatrix = newM;
+//        newM = m * rankMatrix;
+//    }
+
+    return newM;
 }
 
