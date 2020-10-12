@@ -10,9 +10,9 @@
 using namespace std;
 
 class matrix {
-    int rows;
-    int columns;
-    double** matArr;
+    int rows; //rows of matrix
+    int columns; //columns of matrix
+    double** matArr; //double ** to matrix array
 
 public:
     matrix(const matrix &otherMatrix);
@@ -27,23 +27,25 @@ public:
     int getValue(int r, int c);
     void clear();
     void getFinalRanks();
-    matrix markov(matrix m, matrix rankMatrix);
     bool compare(matrix rhs, double tolerance);
     ~matrix();
     void createProbabilityMatrix();
 
     matrix operator++(int){
+        //use operator to increment and return original:postfix
         matrix tmp(*this);
         operator++();
         return tmp;
     }
 
     matrix& operator=(matrix rhs) {
+        //copy and swap algorithm
         mySwap(*this, rhs);
         return *this;
     }
 
     void mySwap(matrix &original, matrix &other) {
+        //parse array and swap values
         for  (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 swap(original.matArr[i][j], other.matArr[i][j]);
@@ -52,6 +54,7 @@ public:
     }
 
     matrix& operator++() {
+        //increment all matrix values by 1
         for  (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 matArr[i][j] = (matArr[i][j] + 1);
@@ -61,12 +64,14 @@ public:
     }
 
     matrix operator--(int){
+        //use operator to increment and return original:postfix
         matrix tmp(*this);
         operator--();
         return tmp;
     }
 
     matrix& operator--() {
+        //decrement all matrix values by 1
         for  (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 matArr[i][j] = matArr[i][j] - 1;
@@ -76,6 +81,8 @@ public:
     }
 
     matrix& operator+=(const matrix& rhs) {
+        //parse matrix and add other matrix's corresponding value
+
         if (rows != rhs.rows || columns != rhs.columns) {
             throw std::invalid_argument("Entered indexes are invalid!");
         }
@@ -94,6 +101,7 @@ public:
         if (rows != rhs.rows || columns != rhs.columns) {
             throw std::invalid_argument("Entered indexes are invalid!");
         }
+        //parse matrix and subtract other matrix's corresponding value
         for  (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 matArr[i][j] = matArr[i][j] - rhs.matArr[i][j];
