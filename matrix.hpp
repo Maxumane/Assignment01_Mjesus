@@ -26,6 +26,7 @@ public:
     void setValue(int r, int c, int newValue);
     int getValue(int r, int c);
     void clear();
+    void getFinalRanks();
     matrix markov(matrix m, matrix rankMatrix);
     bool compare(matrix rhs, double tolerance);
     ~matrix();

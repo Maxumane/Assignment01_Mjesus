@@ -15,9 +15,7 @@ matrix::matrix() :  rows(1), columns(1) {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = 0.0; // change this to equal othermatrix values
-            cout << matArr[i][j] << " ";
         }
-        cout << endl;
     }
 }
 
@@ -48,9 +46,7 @@ matrix::matrix(int n) : rows(n), columns(n) {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = 0;
-            cout << matArr[i][j] << " ";
         }
-        cout << endl;
     }
 }
 
@@ -62,28 +58,9 @@ matrix::matrix(int r, int c) : rows(r), columns(c) {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = 0;
-            cout << matArr[i][j] << " ";
         }
-        cout << endl;
     }
 }
-
-//matrix m;
-
-//matrix markov(matrix m, matrix rankMatrix) { MARKOV
-//
-//    matrix newM = m * rankMatrix
-//
-//    while (compare(newM, rankMatrix, 0.01)) {
-//        rankMatrix = newM;
-//        newM = m * rankMatrix;
-//    }
-//
-//    return newM;
-//}
-//
-//matrix finalAnswer = markov(m, rankMatrix);
-
 
 matrix matrix::markov(matrix m, matrix rankMatrix) {
 
@@ -123,9 +100,7 @@ matrix::matrix(int r[], int arrSize) {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = r[index++];
-            cout << matArr[i][j] << " ";
         }
-        cout << endl;
     }
 }
 
@@ -133,9 +108,7 @@ void matrix::setValue(int r, int c, int newValue) {
     matArr[r-1][c-1] = newValue;
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
-            cout << matArr[i][j] << " ";
         }
-        cout << endl;
     }
 }
 
@@ -151,14 +124,11 @@ void matrix::clear() {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = 0;
-            cout << matArr[i][j] << " ";
         }
-        cout << endl;
     }
 }
 
 void matrix::createProbabilityMatrix() {
-    cout << "generating probability matrix" << endl;
     int count = 0;
             for  (int i = 0; i < columns; i++) {
                 count = 0;
@@ -178,6 +148,22 @@ void matrix::createProbabilityMatrix() {
                     }
                 }
             }
+}
+
+void matrix::getFinalRanks() {
+    cout << "Final ranks below:" << endl;
+    double total = 0;
+    for  (int i = 0; i < columns; i++) {
+        total = 0;
+
+        for (int j = 0; j < rows; j++) {
+            total += matArr[j][i];
+        }
+
+        for (int j = 0; j < rows; j++) {
+                cout << ((matArr[j][i] / total) * (double) 100) << "%" << endl;
+        }
+    }
 }
 
 ostream& operator<< (ostream& os, const matrix& a) {
@@ -243,9 +229,7 @@ matrix::matrix(int n, double value) {
     for  (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
             matArr[i][j] = value;
-            cout << matArr[i][j] << " ";
         }
-        cout << endl;
     }
 }
 
@@ -270,26 +254,17 @@ matrix& matrix::operator*=(const matrix &rhs) {
         throw std::invalid_argument("Entered indexes are invalid!");
     }
 
-    cout << "starting multiply" << endl;
-
     int prodCol = (columns < rhs.columns) ? columns : rhs.columns;
     int prodRow = (rows < rhs.columns) ? rows : rhs.rows;
-
-    cout << "rows: " << prodRow << endl;
-    cout << "columns: " << prodCol << endl;
 
     matrix product = matrix(prodRow, prodCol);
 
     for (int i = 0; i < prodRow; i++) {
         for (int j = 0; j < prodCol; j++) {
             for (int k = 0; k < columns; k++) {
-                cout << "matArr[k][j] " << matArr[k][j] << endl;
-                cout << "rhs.matArr[k][j] " << rhs.matArr[i][k] << endl; //this is 1, then 0,0,0
                 product.matArr[i][j] += matArr[i][k] * rhs.matArr[k][j];
-                cout << matArr[k][j] * rhs.matArr[i][k] << " ";
             }
         }
-        cout << endl;
     }
     this->matArr = product.matArr;
     this->columns = prodCol;

@@ -17,36 +17,16 @@ const int MAX_SIZE = 100;
 void pageRanking() {
     int arrSize = 0;
     int* arr = readFile(&arrSize);
-    cout << "array size: " << arrSize << endl;
     matrix test = matrix(arr, arrSize);
     test.createProbabilityMatrix();
     matrix m1 = test * 0.85;
-    cout << m1;
     matrix teleportMatrix = matrix(arrSize, (1/sqrt(arrSize)));
     matrix m2 = teleportMatrix * 0.15;
     matrix m = m1 + m2;
-    cout << "//////////////" << endl;
-    cout << "//////////////" << endl;
-    cout << "//////////////" << endl;
-    cout << m;
-    cout << "//////////////" << endl;
-    cout << "//////////////" << endl;
-    cout << "printRank" << endl;
     matrix rankMatrix = matrix(sqrt(arrSize), 1, 1);
-    cout << rankMatrix << endl;
-    cout << "//////////////" << endl;
-    cout << "//////////////" << endl;
-    cout << "//////////////" << endl;
     matrix testMultiply = test * rankMatrix;
-    cout << test;
-    cout << "//////////////" << endl;
-    cout << testMultiply;
-    cout << "//////////////" << endl;
-    cout << "//////////////" << endl;
-    cout << "//////////////" << endl;
     matrix postMarkov = markov(m, rankMatrix);
-    cout << postMarkov << endl;
-//    matrix newM = test * test;
+    postMarkov.getFinalRanks();
 }
 
 int * readFile(int * size) {
@@ -66,10 +46,6 @@ int * readFile(int * size) {
 
         *size = count;
 
-        for(int i = 0; i < count; i++)
-        {
-            cout << numbers[i] << endl;
-        }
     }
     else { cout << "Error: File name not loaded" << endl;}
     myReadFile.close();
@@ -90,7 +66,4 @@ matrix markov(matrix m, matrix rankMatrix) {
     return newM;
 }
 
-void addItUp() {
-
-}
 
