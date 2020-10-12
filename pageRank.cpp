@@ -10,9 +10,7 @@
 #include <iostream>
 #include "matrix.hpp"
 #include <cmath>
-const char *targetfile = "readings.txt";
 using namespace std;
-const int MAX_SIZE = 100;
 
 //function that does all the pageRanking which is used in main
 void pageRanking() {
@@ -34,7 +32,7 @@ void pageRanking() {
 int * readFile(int * size) {
 
     ifstream myReadFile; //filestream being read
-    myReadFile.open("readings.txt"); //open file
+    myReadFile.open("connectivity.txt"); //open file
     double output; //blank double for reading
     int * numbers; //pointer for array
     numbers = new int[100]; //array we take in
