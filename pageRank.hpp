@@ -12,8 +12,7 @@
 
 using namespace std;
 
-int * readFile(int * size);
-void pageRanking();
-matrix markov(matrix m, matrix rankMatrix);
-
+    int *readFile(int *size);
+    void pageRanking();
+    matrix markov(matrix m, matrix rankMatrix);
 #endif //ASSIGNMENT01_MJESUS_PAGERANK_HPP

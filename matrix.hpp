@@ -5,7 +5,6 @@
 #ifndef LAB05_MATRIX_HPP
 #define LAB05_MATRIX_HPP
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
